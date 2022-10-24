@@ -1,9 +1,10 @@
 import React from 'react';
+import CarouselContainer from '../Shared/CarouselContainer/CarouselContainer';
 
 const Home = () => {
     return (
         <div>
-            This is home
+            <CarouselContainer></CarouselContainer>
         </div>
     );
 };
