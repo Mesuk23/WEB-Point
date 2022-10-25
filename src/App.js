@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from './Layout/Main';
@@ -8,6 +8,7 @@ import Login from './Pages/Shared/Login/Login';
 import Register from './Pages/Shared/Register/Register';
 import Blog from './Pages/Blog/Blog';
 import FAQ from './Pages/FAQ/FAQ';
+import CourseDetails from './Pages/Courses/CourseDetails';
 
 function App() {
 
@@ -22,7 +23,13 @@ function App() {
         },
         {
           path: '/courses',
-          element: <Courses></Courses>
+          element: <Courses></Courses>,
+          loader: () => fetch(`http://localhost:5000/courses`)
+        },
+        {
+          path: '/courses/:id',
+          element: <CourseDetails></CourseDetails>,
+          loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
         },
         {
           path: '/blog',

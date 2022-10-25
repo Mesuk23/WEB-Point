@@ -3,14 +3,15 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../Context/ContextProvider';
-import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { FaGoogle, FaFacebook } from 'react-icons/fa';
+import { FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const auth = getAuth();
 const Register = () => {
     const { createUser } = useContext(authContext)
     const navigate = useNavigate();
-    const provider = new GoogleAuthProvider();
+    const googleProvider = new GoogleAuthProvider();
+    const facebookProvider = new FacebookAuthProvider();
 
     const registerUser = event => {
         event.preventDefault();
@@ -32,7 +33,7 @@ const Register = () => {
     }
     // Google handler 
     const handleGoogle = () => {
-        signInWithPopup(auth, provider)
+        signInWithPopup(auth, googleProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
@@ -43,7 +44,14 @@ const Register = () => {
     }
 
     // Github handler
-    const handleGithub = () => {
+    const handleFacebook = () => {
+        signInWithPopup(auth, facebookProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/');
+            })
+            .catch(error => console.error(error))
 
     }
 
@@ -76,8 +84,8 @@ const Register = () => {
                 <Button onClick={handleGoogle} className='me-3' variant='outline-success' >
                     Sign in with Google <FaGoogle />
                 </Button>
-                <Button onClick={handleGithub} variant='outline-dark' >
-                    Sign in with Github <FaGithub />
+                <Button onClick={handleFacebook} className='me-3' variant='outline-dark' >
+                    Sign in with Facebook <FaFacebook />
                 </Button>
             </Form>
 
