@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Outlet } from 'react-router-dom';
+import { authContext } from '../Pages/Shared/Context/ContextProvider';
 
 const Main = () => {
+
+    const { user, handleLogout } = useContext(authContext);
+
+    const signOut = () => {
+        handleLogout()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
     return (
         <div>
             <nav>
@@ -20,10 +32,17 @@ const Main = () => {
                                 <Nav.Link href="/faq">FAQ</Nav.Link>
                             </Nav>
                             <Nav>
-                                <Nav.Link href="/login">Sign in</Nav.Link>
-                                <Nav.Link href="/register">Register</Nav.Link>
+                                {
+                                    user?.email ? <Nav.Link onClick={signOut}>Sign Out</Nav.Link> :
+                                        <>
+                                            <Nav.Link href="/login">Sign in</Nav.Link>
+                                            <Nav.Link href="/register">Register</Nav.Link>
+                                        </>
+                                }
+
+
                                 <Nav.Link eventKey={2} href="#memes">
-                                    Dank memes
+                                    {user?.email}
                                 </Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
