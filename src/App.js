@@ -11,6 +11,7 @@ import FAQ from './Pages/FAQ/FAQ';
 import CourseDetails from './Pages/Courses/CourseDetails';
 import PrivateRoute from './Pages/Shared/privateRoute/PrivateRoute';
 import Checkout from './Pages/Shared/Checkout/Checkout';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
 
@@ -53,6 +54,10 @@ function App() {
         {
           path: '/register',
           element: <Register></Register>
+        },
+        {
+          path: '*',
+          element: <NotFound></NotFound>
         }
       ]
     }
