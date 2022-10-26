@@ -9,6 +9,7 @@ import Register from './Pages/Shared/Register/Register';
 import Blog from './Pages/Blog/Blog';
 import FAQ from './Pages/FAQ/FAQ';
 import CourseDetails from './Pages/Courses/CourseDetails';
+import PrivateRoute from './Pages/Shared/privateRoute/PrivateRoute';
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
         },
         {
           path: '/courses',
-          element: <Courses></Courses>,
+          element: <PrivateRoute><Courses></Courses></PrivateRoute>,
           loader: () => fetch(`http://localhost:5000/courses`)
         },
         {
