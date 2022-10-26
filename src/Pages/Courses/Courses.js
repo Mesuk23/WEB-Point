@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import AllCourses from './AllCourses';
 
 const Courses = () => {
@@ -15,7 +15,7 @@ const Courses = () => {
                     <Col lg='3'>
                         <h2 className='mb-3'>Category</h2>
                         {
-                            courses.map(course => <p>{course.name}</p>)
+                            courses.map(course => <p> <Link to={`course-details/${course.id}`}> {course.name}</Link></p>)
                         }
                     </Col>
                     <Col lg='9'>
