@@ -14,7 +14,24 @@
   color: #333;
 }
 
-.course-details {
+.all-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.courses-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 45px;
+  margin: 50px 20px;
+}
+
+@media screen and (max-width:700px) {
+  .all-container {
+    display: block;
+  }
+
+  .courses-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
