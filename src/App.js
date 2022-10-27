@@ -27,12 +27,12 @@ function App() {
         {
           path: '/courses',
           element: <PrivateRoute><Courses></Courses></PrivateRoute>,
-          loader: () => fetch(`http://localhost:5000/courses`)
+          loader: () => fetch(`https://assignment-10-server-ruby.vercel.app/courses`)
         },
         {
           path: 'courses/course-details/:id',
           element: <CourseDetails></CourseDetails>,
-          loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+          loader: ({ params }) => fetch(`https://assignment-10-server-ruby.vercel.app/courses/${params.id}`)
         },
         {
           path: 'courses/checkout/:id',
