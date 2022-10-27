@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -8,15 +9,18 @@ const Login = () => {
     const { handleLogin } = useContext(authContext);
     const navigate = useNavigate();
 
+    const [error, setError] = useState(false);
+
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
+
+
 
     const handleLoginFrom = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-
 
 
         handleLogin(email, password)
@@ -26,7 +30,12 @@ const Login = () => {
                 form.reset();
                 navigate(from, { replace: true });
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error);
+                setError(error.message);
+            })
+
+
 
     }
     return (
@@ -41,6 +50,11 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control name="password" type="password" placeholder="Password" required />
                 </Form.Group>
+                <Form.Text>
+                    {
+                        error && <p className='text-danger'>{error}</p>
+                    }
+                </Form.Text>
 
                 <Form.Group className="mb-3">
                     <Form.Text>

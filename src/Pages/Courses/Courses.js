@@ -5,14 +5,13 @@ import AllCourses from './AllCourses';
 
 const Courses = () => {
     const courses = useLoaderData();
-    console.log(courses);
     return (
         <div className='mt-5'>
 
 
             <Container>
                 <Row>
-                    <Col lg='3'>
+                    <Col className='border-end' lg='3'>
                         <h2 className='mb-3'>Category</h2>
                         {
                             courses.map(course => <p> <Link to={`course-details/${course.id}`}> {course.name}</Link></p>)
@@ -22,6 +21,7 @@ const Courses = () => {
                         {
                             courses.map(course => <AllCourses key={course.id} course={course}></AllCourses>)
                         }
+
                     </Col>
                 </Row>
             </Container>

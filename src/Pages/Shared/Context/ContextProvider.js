@@ -9,6 +9,7 @@ const ContextProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
 
+
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }

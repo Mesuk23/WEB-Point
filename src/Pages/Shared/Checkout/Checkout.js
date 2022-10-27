@@ -11,7 +11,7 @@ const Checkout = () => {
     const { name, price } = course;
     return (
         <div className='p-3 my-5 container mx-auto text-center'>
-            <Card className='w-70'>
+            <Card className='w-70 text-dark'>
                 {/* <Card.Img variant="top" src={photoUrl} /> */}
                 <Card.Body>
                     <Card.Title> <h2>Get premium access</h2> </Card.Title> <hr />

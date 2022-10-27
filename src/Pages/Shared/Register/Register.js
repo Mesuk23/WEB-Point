@@ -83,7 +83,7 @@ const Register = () => {
                 <Button onClick={handleGoogle} className='me-3' variant='outline-success' >
                     Sign in with Google <FaGoogle />
                 </Button>
-                <Button onClick={handleFacebook} className='me-3' variant='outline-dark' >
+                <Button onClick={handleFacebook} className='me-3' variant='outline-primary' >
                     Sign in with Facebook <FaFacebook />
                 </Button>
             </Form>

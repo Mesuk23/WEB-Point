@@ -5,6 +5,7 @@ const Home = () => {
     return (
         <div>
             <CarouselContainer></CarouselContainer>
+
         </div>
     );
 };
